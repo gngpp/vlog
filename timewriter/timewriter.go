@@ -4,6 +4,7 @@ import (
 	"compress/gzip"
 	"errors"
 	"fmt"
+	"github.com/zf1976/vlog"
 	"io"
 	"io/ioutil"
 	"os"
@@ -13,7 +14,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-	"vlog"
 )
 
 var log = vlog.Default()

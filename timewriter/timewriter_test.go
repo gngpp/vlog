@@ -1,8 +1,8 @@
 package timewriter
 
 import (
+	"github.com/zf1976/vlog"
 	"testing"
-	"vlog"
 )
 
 func TestWrite(t *testing.T) {
