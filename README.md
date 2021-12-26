@@ -12,14 +12,20 @@ vlog implements io.Writer to roll and compress log file time every day, and enca
 
 **Example**
 
-To use vlog, you can git clone [https://github.com/zf1976/vlog](https://github.com/zf1976/vlog), and import like this:
+To use vlog, you can:
+
+```shell
+go get github.com/zf1976/vlog
+```
+
+and import like this:
 
 ```go
 package main
 
 import (
-	"vlog"
-	"vlog/timewriter"
+	"github.com/zf1976/vlog"
+	"github.com/zf1976/vlog/timewriter"
 )
 
 func main() {
