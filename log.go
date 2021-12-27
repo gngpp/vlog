@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"sync"
 )
 
 // Logging level.
@@ -39,29 +40,6 @@ type LevelEnum struct {
 	FATAL LevelType
 }
 
-// NewLogger creates a logger.
-func NewLogger(out io.Writer) *Logger {
-	ret := &Logger{level: logLevel, logger: log.New(out, "", log.Ldate|log.Ltime|log.Lshortfile)}
-
-	loggers = append(loggers, ret)
-
-	return ret
-}
-
-// Default create default logger
-func Default() *Logger {
-	return NewLogger(os.Stdout)
-}
-
-// SetLevel sets the logging level of all loggers. (global)
-func SetLevel(level LevelType) {
-	logLevel = getLevel(level)
-
-	for _, l := range loggers {
-		l.SetLevel(level)
-	}
-}
-
 type LevelType string
 
 var Level = LevelEnum{
@@ -72,6 +50,61 @@ var Level = LevelEnum{
 	WARN:  warn,
 	ERROR: error,
 	FATAL: fatal,
+}
+
+var syncOutput = false
+
+var mu sync.Mutex
+
+var writer *io.Writer
+
+// New creates a logger.
+func New(out io.Writer) *Logger {
+	ret := &Logger{level: logLevel, logger: log.New(out, "", log.Ldate|log.Ltime|log.Lshortfile)}
+
+	loggers = append(loggers, ret)
+
+	return ret
+}
+
+// Default create default logger
+func Default() *Logger {
+	if writer != nil {
+		return New(*writer)
+	}
+	return New(os.Stdout)
+}
+
+// SetLevel sets the logging level of all loggers. (global)
+func SetLevel(level LevelType) {
+	mu.Lock()
+
+	defer mu.Unlock()
+	logLevel = getLevel(level)
+
+	for _, l := range loggers {
+		l.SetLevel(level)
+	}
+}
+
+// SetOutput sets the output destination for the standard logger. (global)
+func SetOutput(w io.Writer) {
+	mu.Lock()
+	defer mu.Unlock()
+	writer = &w
+	if syncOutput {
+		log.SetOutput(w)
+	}
+	for _, logger := range loggers {
+		logger.SetOutput(w)
+	}
+}
+
+// SetSyncOutput synchronize output settings to the default log library
+func SetSyncOutput(b bool) {
+	mu.Lock()
+	defer mu.Unlock()
+	syncOutput = b
 }
 
 // all loggers.
@@ -108,6 +141,11 @@ func getLevel(level LevelType) int {
 	default:
 		return Info
 	}
+}
+
+// SetOutput sets the output destination for the standard logger.
+func (l *Logger) SetOutput(w io.Writer) {
+	l.logger.SetOutput(w)
 }
 
 // SetLevel sets the logging level of a logger.

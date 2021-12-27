@@ -4,7 +4,6 @@ import (
 	"compress/gzip"
 	"errors"
 	"fmt"
-	"github.com/zf1976/vlog"
 	"io"
 	"io/ioutil"
 	"os"
@@ -15,8 +14,6 @@ import (
 	"sync"
 	"time"
 )
-
-var log = vlog.Default()
 
 // io.WriteCloser
 var _ io.WriteCloser = (*TimeWriter)(nil)
@@ -45,7 +42,7 @@ func (l *TimeWriter) Write(p []byte) (n int, err error) {
 
 	if l.file == nil {
 		if err = l.openExistingOrNew(); err != nil {
-			log.Errorf("write fail, msg(%s)\n", err)
+			fmt.Errorf("write fail, msg(%s)\n", err)
 			return 0, err
 		}
 	}
@@ -53,7 +50,6 @@ func (l *TimeWriter) Write(p []byte) (n int, err error) {
 	if l.curFilename != l.filename() {
 		err := l.rotate()
 		if err != nil {
-			log.Error(err)
 			return 0, err
 		}
 	}
@@ -295,7 +291,7 @@ func compressLogFile(src, dst string) (err error) {
 	defer func(f *os.File) {
 		err := f.Close()
 		if err != nil {
-			log.Error(err)
+			fmt.Errorf("close failed :%v", err)
 		}
 	}(f)
 
@@ -311,7 +307,7 @@ func compressLogFile(src, dst string) (err error) {
 	defer func(gzf *os.File) {
 		err := gzf.Close()
 		if err != nil {
-			log.Error(err)
+			fmt.Errorf("close failed :%v", err)
 		}
 	}(gzf)
 
@@ -321,7 +317,7 @@ func compressLogFile(src, dst string) (err error) {
 		if err != nil {
 			err := os.Remove(dst)
 			if err != nil {
-				log.Error(err)
+				fmt.Errorf("remove failed :%v", err)
 				return
 			}
 			err = fmt.Errorf("failed to compress log file: %v", err)

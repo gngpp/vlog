@@ -30,15 +30,73 @@ import (
 
 func main() {
 	timeWriter := &timewriter.TimeWriter{
-		Dir:           "./log",
+		Dir:           "./logs",
 		Compress:      true,
 		ReserveDay:    30,
 		LogFilePrefix: "vlog",
 	}
-	log := vlog.NewLogger(timeWriter)
-	log.Infof("hello vdns")
+	log := vlog.New(timeWriter)
+	log.Info("hello vlog")
 }
 ```
+
+If you need to set the output globally:
+
+```go
+package main
+
+import (
+	"github.com/zf1976/vlog"
+	"github.com/zf1976/vlog/timewriter"
+	"io"
+	"os"
+)
+
+func main() {
+	timeWriter := &timewriter.TimeWriter{
+		Dir:           "./logs",
+		Compress:      true,
+		ReserveDay:    30,
+		LogFilePrefix: "vlog",
+	}
+	w := io.MultiWriter(os.Stdout, timeWriter)
+	vlog.SetOutput(w)
+	// global settings
+	logger := vlog.Default()
+	logger.Info("hello vlog")
+}
+```
+
+If you need to set the output globally and synchronize to the default log library:
+
+```go
+package main
+
+import (
+	"github.com/zf1976/vlog"
+	"github.com/zf1976/vlog/timewriter"
+	"io"
+	"log"
+	"os"
+)
+
+func main() {
+	timeWriter := &timewriter.TimeWriter{
+		Dir:           "./logs",
+		Compress:      true,
+		ReserveDay:    30,
+		LogFilePrefix: "vlog",
+	}
+	w := io.MultiWriter(os.Stdout, timeWriter)
+	// global settings
+	vlog.SetSyncOutput(true)
+	vlog.SetOutput(w)
+	logger := vlog.Default()
+	logger.Info("hello vlog")
+	log.Println("hello vlog")
+}
+```
+
 ## Reference
 
 * [lumberject](https://github.com/natefinch/lumberjack)
