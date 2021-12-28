@@ -52,6 +52,18 @@ var Level = LevelEnum{
 	FATAL: fatal,
 }
 
+type Color string
+
+//goland:noinspection ALL
+const (
+	DEBUG_COLOR Color = "\033[0;36m"
+	INFO_COLOR  Color = "\033[0;32m"
+	WARN_COLOR  Color = "\033[0;33m"
+	ERROR_COLOR Color = "\033[0;31m"
+	TRACE_COLOR Color = "\033[0;34m"
+	FATAL_COLOR Color = "\033[0;35m"
+)
+
 var syncOutput = false
 
 var mu sync.Mutex
@@ -174,7 +186,7 @@ func (l *Logger) Trace(v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("TRACE ")
+	l.logger.SetPrefix(string(TRACE_COLOR) + "[TRACE] ")
 	err := l.logger.Output(2, fmt.Sprintln(v...))
 	if err != nil {
 		fmt.Println(err)
@@ -187,7 +199,7 @@ func (l *Logger) Tracef(format string, v ...interface{}) {
 	if Trace < l.level {
 		return
 	}
-	l.logger.SetPrefix("TRACE ")
+	l.logger.SetPrefix(string(TRACE_COLOR) + "[TRACE] ")
 	err := l.logger.Output(2, fmt.Sprintf(format, v...))
 	if err != nil {
 		fmt.Println(err)
@@ -201,7 +213,7 @@ func (l *Logger) Debug(v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("DEBUG ")
+	l.logger.SetPrefix(string(DEBUG_COLOR) + "[DEBUG] ")
 	err := l.logger.Output(2, fmt.Sprintln(v...))
 	if err != nil {
 		fmt.Println(err)
@@ -215,7 +227,7 @@ func (l *Logger) Debugf(format string, v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("DEBUG ")
+	l.logger.SetPrefix(string(DEBUG_COLOR) + "[DEBUG] ")
 	err := l.logger.Output(2, fmt.Sprintf(format, v...))
 	if err != nil {
 		fmt.Println(err)
@@ -229,7 +241,7 @@ func (l *Logger) Info(v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("INFO ")
+	l.logger.SetPrefix(string(INFO_COLOR) + "[INFO] ")
 	err := l.logger.Output(2, fmt.Sprintln(v...))
 	if err != nil {
 		fmt.Println(err)
@@ -243,7 +255,7 @@ func (l *Logger) Infof(format string, v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("INFO ")
+	l.logger.SetPrefix(string(INFO_COLOR) + "[INFO] ")
 	err := l.logger.Output(2, fmt.Sprintf(format, v...))
 	if err != nil {
 		fmt.Println(err)
@@ -257,7 +269,7 @@ func (l *Logger) Warn(v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("WARN ")
+	l.logger.SetPrefix(string(WARN_COLOR) + "[WARN] ")
 	err := l.logger.Output(2, fmt.Sprintln(v...))
 	if err != nil {
 		fmt.Println(err)
@@ -271,7 +283,7 @@ func (l *Logger) Warnf(format string, v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("WARN ")
+	l.logger.SetPrefix(string(WARN_COLOR) + "[WARN] ")
 	err := l.logger.Output(2, fmt.Sprintf(format, v...))
 	if err != nil {
 		fmt.Println(err)
@@ -285,7 +297,7 @@ func (l *Logger) Error(v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("ERROR ")
+	l.logger.SetPrefix(string(ERROR_COLOR) + "[ERROR] ")
 	err := l.logger.Output(2, fmt.Sprintln(v...))
 	if err != nil {
 		fmt.Println(err)
@@ -299,7 +311,7 @@ func (l *Logger) Errorf(format string, v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("ERROR ")
+	l.logger.SetPrefix(string(ERROR_COLOR) + "[ERROR] ")
 	err := l.logger.Output(2, fmt.Sprintf(format, v...))
 	if err != nil {
 		fmt.Println(err)
@@ -313,7 +325,7 @@ func (l *Logger) Fatal(v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("FATAL ")
+	l.logger.SetPrefix(string(FATAL_COLOR) + "[FATAL] ")
 	err := l.logger.Output(2, fmt.Sprintln(v...))
 	if err != nil {
 		fmt.Println(err)
@@ -328,7 +340,7 @@ func (l *Logger) Fatalf(format string, v ...interface{}) {
 		return
 	}
 
-	l.logger.SetPrefix("FATAL ")
+	l.logger.SetPrefix(string(FATAL_COLOR) + "[FATAL] ")
 	err := l.logger.Output(2, fmt.Sprintf(format, v...))
 	if err != nil {
 		fmt.Println(err)
