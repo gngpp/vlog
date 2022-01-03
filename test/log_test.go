@@ -1,30 +1,31 @@
-package vlog
+package test
 
 import (
+	"github.com/zf1976/vlog"
 	"testing"
 )
 
 func TestLog(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.Infof("info")
 	logger.Infof("info value:%s", "test")
 
 }
 
 func TestSetLevel(t *testing.T) {
-	SetLevel("trace")
+	vlog.SetLevel("trace")
 }
 
 func TestTrace(t *testing.T) {
-	logger := Default()
-	SetLevel("trace")
+	logger := vlog.Default()
+	vlog.SetLevel("trace")
 	logger.Trace("trace")
 	logger.SetLevel("off")
 	logger.Trace("trace")
 }
 
 func TestTracef(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("trace")
 	logger.Tracef("tracef")
 	logger.SetLevel("off")
@@ -34,7 +35,7 @@ func TestTracef(t *testing.T) {
 }
 
 func TestDebug(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("debug")
 	logger.Debug("debug")
 	logger.SetLevel("off")
@@ -42,7 +43,7 @@ func TestDebug(t *testing.T) {
 }
 
 func TestDebugf(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("debug")
 	logger.Debugf("debugf")
 	logger.SetLevel("off")
@@ -50,7 +51,7 @@ func TestDebugf(t *testing.T) {
 }
 
 func TestInfo(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("info")
 	logger.Info("info")
 	logger.SetLevel("off")
@@ -58,7 +59,7 @@ func TestInfo(t *testing.T) {
 }
 
 func TestInfof(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("info")
 	logger.Infof("infof")
 	logger.SetLevel("off")
@@ -66,7 +67,7 @@ func TestInfof(t *testing.T) {
 }
 
 func TestWarn(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("warn")
 	logger.Warn("warn")
 	logger.SetLevel("off")
@@ -74,7 +75,7 @@ func TestWarn(t *testing.T) {
 }
 
 func TestWarnf(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("warn")
 	logger.Warnf("warnf")
 	logger.SetLevel("off")
@@ -82,81 +83,39 @@ func TestWarnf(t *testing.T) {
 }
 
 func TestError(t *testing.T) {
-	logger := Default()
-	logger.SetLevel("error")
-	logger.Error("error")
+	logger := vlog.Default()
+	logger.SetLevel("err")
+	logger.Error("err")
 	logger.SetLevel("off")
-	logger.Error("error")
+	logger.Error("err")
 }
 
 func TestErrorf(t *testing.T) {
-	logger := Default()
-	logger.SetLevel(Level.OFF)
+	logger := vlog.Default()
+	logger.SetLevel(vlog.Level.OFF)
 	logger.Errorf("errorf")
 	logger.SetLevel("off")
 	logger.Errorf("errorf")
 }
 
 func TestFatal(t *testing.T) {
-	logger := Default()
-	logger.SetLevel(Level.OFF)
+	logger := vlog.Default()
+	logger.SetLevel(vlog.Level.OFF)
 	logger.Fatal("fatal")
 	logger.SetLevel("off")
 	logger.Fatal("fatal")
 }
 
 func TestFatalf(t *testing.T) {
-	logger := Default()
-	logger.SetLevel(Level.OFF)
+	logger := vlog.Default()
+	logger.SetLevel(vlog.Level.OFF)
 	logger.Fatalf("fatalf")
 	logger.SetLevel("off")
 	logger.Errorf("fatalf")
 }
-func TestGetLevel(t *testing.T) {
-	if getLevel("trace") != Trace {
-		t.FailNow()
-
-		return
-	}
-
-	if getLevel("debug") != Debug {
-		t.FailNow()
-
-		return
-	}
-
-	if getLevel("info") != Info {
-		t.FailNow()
-
-		return
-	}
-
-	if getLevel("warn") != Warn {
-		t.FailNow()
-
-		return
-	}
-
-	if getLevel("error") != Error {
-		t.FailNow()
-
-		return
-	}
-}
-
-func TestLoggerSetLevel(t *testing.T) {
-	logger := Default()
-	logger.SetLevel("trace")
-
-	if logger.level != Trace {
-		t.FailNow()
-
-		return
-	}
-}
 
 func TestIsTraceEnabled(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("trace")
 
 	if !logger.IsTraceEnabled() {
@@ -167,7 +126,7 @@ func TestIsTraceEnabled(t *testing.T) {
 }
 
 func TestIsDebugEnabled(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("debug")
 
 	if !logger.IsDebugEnabled() {
@@ -178,7 +137,7 @@ func TestIsDebugEnabled(t *testing.T) {
 }
 
 func TestIsWarnEnabled(t *testing.T) {
-	logger := Default()
+	logger := vlog.Default()
 	logger.SetLevel("warn")
 	if !logger.IsWarnEnabled() {
 		t.FailNow()
