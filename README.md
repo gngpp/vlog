@@ -60,8 +60,8 @@ func main() {
 		LogFilePrefix: "vlog",
 	}
 	w := io.MultiWriter(os.Stdout, timeWriter)
-	vlog.SetOutput(w)
 	// global settings
+	vlog.SetOutput(w)
 	logger := vlog.Default()
 	logger.Info("hello vlog")
 }
