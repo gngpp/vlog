@@ -67,6 +67,14 @@ func New(out io.Writer) *Logger {
 	return ret
 }
 
+func NewFlag(out io.Writer, flag int) *Logger {
+	ret := &Logger{level: logLevel, logger: log.New(out, "", flag)}
+
+	loggers = append(loggers, ret)
+
+	return ret
+}
+
 // Default create default logger
 func Default() *Logger {
 	if writer != nil {
