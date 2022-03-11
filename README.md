@@ -15,7 +15,7 @@ vlog implements io.Writer to roll and compress log file time every day, and enca
 To use vlog, you can:
 
 ```shell
-go get github.com/zf1976/vlog@1.0.3
+go get -u github.com/zf1976/vlog
 ```
 
 and import like this:
