@@ -9,23 +9,23 @@
 
 vlog实现io.Writer支持每天滚动压缩日志文件时间，使用原生Golang原生日志库封装
 
-## Overview
+## 概述
 
-* implements io.Writer. You can easily use in golang log, GORM, grpclog etc.
-* daily roll log, you can specific the log file name's prefix, default is process name
-* compress to gz for old file
+* 基于实现 io.Writer。您可以轻松地在 golang log、GORM、grpclog 等中使用。
+* 支持每日滚动日志，可以指定日志文件名的前缀，默认为进程名
+* 旧文件压缩为gz格式
 
-## Getting Started
+## 入门
 
-**Example**
+**示例**
 
-To use vlog, you can:
+要使用 vlog，您可以：
 
 ```shell
 go get -u github.com/zf1976/vlog
 ```
 
-and import like this:
+并像这样导入：
 
 ```go
 package main
@@ -47,7 +47,7 @@ func main() {
 }
 ```
 
-If you need to set the output globally:
+如果需要全局设置输出：
 
 ```go
 package main
@@ -74,7 +74,7 @@ func main() {
 }
 ```
 
-If you need to set the output globally and synchronize to the default log library:
+如果需要全局设置输出并同步到默认日志库：
 
 ```go
 package main
@@ -104,6 +104,6 @@ func main() {
 }
 ```
 
-## Reference
+## 参考
 
 * [lumberject](https://github.com/natefinch/lumberjack)
