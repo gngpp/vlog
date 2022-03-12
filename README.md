@@ -7,7 +7,7 @@
 
 # vlog
 
-vlog implements io.Writer to roll and compress log file time every day, and encapsulate the use of Golang native log library
+vlog实现io.Writer支持每天滚动压缩日志文件时间，使用原生Golang原生日志库封装
 
 ## Overview
 
