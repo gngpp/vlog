@@ -13,8 +13,8 @@ func Debug(v interface{}) {
 }
 
 // Debugf prints debug level msg with format.
-func Debugf(format string, v interface{}) {
-	logger.Debugf(format, v)
+func Debugf(format string, v ...interface{}) {
+	logger.Debugf(format, v...)
 }
 
 // Info prints info level msg.
@@ -23,8 +23,8 @@ func Info(v interface{}) {
 }
 
 // Infof prints info level msg with format.
-func Infof(format string, v interface{}) {
-	logger.Infof(format, v)
+func Infof(format string, v ...interface{}) {
+	logger.Infof(format, v...)
 }
 
 // Warn prints warning level msg.
@@ -33,8 +33,8 @@ func Warn(v interface{}) {
 }
 
 // Warnf prints warning level msg with format.
-func Warnf(format string, v interface{}) {
-	logger.Warnf(format, v)
+func Warnf(format string, v ...interface{}) {
+	logger.Warnf(format, v...)
 }
 
 // Error err prints err level msg.
@@ -43,8 +43,8 @@ func Error(v interface{}) {
 }
 
 // Errorf prints err level msg with format.
-func Errorf(format string, v interface{}) {
-	logger.Errorf(format, v)
+func Errorf(format string, v ...interface{}) {
+	logger.Errorf(format, v...)
 }
 
 // Fatal prints fatal level msg and exit process with code 1.
@@ -53,6 +53,6 @@ func Fatal(v interface{}) {
 }
 
 // Fatalf prints fatal level msg with format and exit process with code 1.
-func Fatalf(format string, v interface{}) {
-	logger.Fatalf(format, v)
+func Fatalf(format string, v ...interface{}) {
+	logger.Fatalf(format, v...)
 }

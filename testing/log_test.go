@@ -1,14 +1,23 @@
-package test
+package testing
 
 import (
 	"github.com/zf1976/vlog"
 	"testing"
 )
 
+func Test(t *testing.T) {
+	vlog.SetLevel(vlog.Level.DEBUG)
+	vlog.Infof("%v-%v", 1, 2)
+	vlog.Debugf("%v-%v", 1, 2)
+	vlog.Errorf("%v-%v", 1, 2)
+	vlog.Warnf("%v-%v", 1, 2)
+	vlog.Fatalf("%v-%v", 1, 2)
+}
+
 func TestLog(t *testing.T) {
 	logger := vlog.Default()
 	logger.Infof("info")
-	logger.Infof("info value:%s", "test")
+	logger.Infof("info value:%s", "testing")
 
 }
 
