@@ -1,5 +1,5 @@
 <p align="center">
-	<a href="https://github.com/zf1976/vlog/blob/releases/latest"><img src="https://img.shields.io/github/v/release/ripperhe/Bob?logo=github" alt="GitHub release" /></a>
+	<a href="https://github.com/zf1976/vlog/releases/tag/v1.0.4"><img src="https://img.shields.io/github/v/release/zf1976/vlog?logo=github" alt="GitHub release" /></a>
 </p>
 <p align="center">
   <strong>Chinese</strong> | <a href="https://github.com/zf1976/vlog/blob/main/README.en.md">English</a>
