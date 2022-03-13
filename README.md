@@ -7,7 +7,7 @@
 
 # vlog
 
-vlog实现io.Writer支持每天滚动压缩日志文件时间，使用原生Golang原生日志库封装
+vlog使用Golang原生日志库封装和实现io.Writer支持每天滚动压缩日志文件
 
 ## 概述
 
