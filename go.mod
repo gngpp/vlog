@@ -1,3 +1,3 @@
-module github.com/zf1976/vlog
+module github.com/gngpp/vlog
 
 go 1.17

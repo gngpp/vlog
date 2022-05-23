@@ -1,7 +1,7 @@
 package timewriter
 
 import (
-	"github.com/zf1976/vlog"
+	"github.com/gngpp/vlog"
 	"io"
 	"log"
 	"os"

@@ -1,7 +1,7 @@
 package testing
 
 import (
-	"github.com/zf1976/vlog"
+	"github.com/gngpp/vlog"
 	"testing"
 )
 

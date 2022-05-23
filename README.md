@@ -1,8 +1,8 @@
 <p align="center">
-	<a href="https://github.com/zf1976/vlog/releases/tag/v1.0.4"><img src="https://img.shields.io/github/v/release/zf1976/vlog?logo=github" alt="GitHub release" /></a>
+	<a href="https://github.com/gngpp/vlog/releases/tag/v1.0.4"><img src="https://img.shields.io/github/v/release/gngpp/vlog?logo=github" alt="GitHub release" /></a>
 </p>
 <p align="center">
-  <strong>Chinese</strong> | <a href="https://github.com/zf1976/vlog/blob/main/README.en.md">English</a>
+  <strong>Chinese</strong> | <a href="https://github.com/gngpp/vlog/blob/main/README.en.md">English</a>
 </p>
 
 # vlog
@@ -22,7 +22,7 @@ vlog使用Golang原生日志库封装和实现io.Writer支持每天滚动压缩�
 要使用 vlog，您可以：
 
 ```shell
-go get -u github.com/zf1976/vlog
+go get -u github.com/gngpp/vlog
 ```
 
 并像这样导入：
@@ -31,8 +31,8 @@ go get -u github.com/zf1976/vlog
 package main
 
 import (
-	"github.com/zf1976/vlog"
-	"github.com/zf1976/vlog/timewriter"
+	"github.com/gngpp/vlog"
+	"github.com/gngpp/vlog/timewriter"
 )
 
 func main() {
@@ -53,8 +53,8 @@ func main() {
 package main
 
 import (
-	"github.com/zf1976/vlog"
-	"github.com/zf1976/vlog/timewriter"
+	"github.com/gngpp/vlog"
+	"github.com/gngpp/vlog/timewriter"
 	"io"
 	"os"
 )
@@ -80,8 +80,8 @@ func main() {
 package main
 
 import (
-	"github.com/zf1976/vlog"
-	"github.com/zf1976/vlog/timewriter"
+	"github.com/gngpp/vlog"
+	"github.com/gngpp/vlog/timewriter"
 	"io"
 	"log"
 	"os"

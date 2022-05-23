@@ -1,8 +1,8 @@
 <p align="center">
-	<a href="https://github.com/zf1976/vlog/releases/tag/v1.0.4"><img src="https://img.shields.io/github/v/release/zf1976/vlog?logo=github" alt="GitHub release" /></a>
+	<a href="https://github.com/gngpp/vlog/releases/tag/v1.0.4"><img src="https://img.shields.io/github/v/release/gngpp/vlog?logo=github" alt="GitHub release" /></a>
 </p>
 <p align="center">
-  <strong>English</strong> | <a href="https://github.com/zf1976/vlog/blob/main/README.md">Chinese</a>
+  <strong>English</strong> | <a href="https://github.com/gngpp/vlog/blob/main/README.md">Chinese</a>
 </p>
 
 # vlog
@@ -22,7 +22,7 @@ vlog implements io.Writer to roll and compress log file time every day, and enca
 To use vlog, you can:
 
 ```shell
-go get -u github.com/zf1976/vlog
+go get -u github.com/gngpp/vlog
 ```
 
 and import like this:
@@ -31,8 +31,8 @@ and import like this:
 package main
 
 import (
-	"github.com/zf1976/vlog"
-	"github.com/zf1976/vlog/timewriter"
+	"github.com/gngpp/vlog"
+	"github.com/gngpp/vlog/timewriter"
 )
 
 func main() {
@@ -53,8 +53,8 @@ If you need to set the output globally:
 package main
 
 import (
-	"github.com/zf1976/vlog"
-	"github.com/zf1976/vlog/timewriter"
+	"github.com/gngpp/vlog"
+	"github.com/gngpp/vlog/timewriter"
 	"io"
 	"os"
 )
@@ -80,8 +80,8 @@ If you need to set the output globally and synchronize to the default log librar
 package main
 
 import (
-	"github.com/zf1976/vlog"
-	"github.com/zf1976/vlog/timewriter"
+	"github.com/gngpp/vlog"
+	"github.com/gngpp/vlog/timewriter"
 	"io"
 	"log"
 	"os"
